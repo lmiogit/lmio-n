@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/css/index.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+    <link rel='stylesheet' href='/css/index.css'/>
+    <link rel="stylesheet" href="/css/iconfont.css">
+</head>
+<body>
+<div id="body" class="body">
+    <nav id="nav" class="nav">
+        <div class="logo">
+            L
+        </div>
+    </nav>
+    <div id="page" class="page">
+        <div class="progress-bar"></div>
+    </div>
+</div>
+<div id="win" class="win">
+    <div class="start-menu">
+        <div class="menu-item">
+            <i class="icon i-game"></i>
+        </div>
+        <div class="menu-item">
+            <i class="icon i-game"></i>
+        </div>
+        <div class="menu-item">
+            <i class="icon i-game"></i>
+        </div>
+        <div class="menu-item">
+            <i class="icon i-game"></i>
+        </div>
+    </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('.progress-bar').addClass('finish');
+        $('.logo').off('click').on('click', function () {
+            $('#win').addClass('active').find('.start-menu').addClass('active');
+        })
+        $('#win').off('click').on('click', function () {
+            var _self = $(this);
+            $(this).find('.start-menu').removeClass('active');
+            window.setTimeout(function () {
+                _self.removeClass('active');
+            }, 400);
+        })
+    });
+</script>
+</body>
 </html>
