@@ -2,6 +2,9 @@
 <html>
 <head>
     <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
     <link rel='stylesheet' href='/css/index.css'/>
     <link rel="stylesheet" href="/css/iconfont.css">
 </head>
@@ -14,39 +17,83 @@
     </nav>
     <div id="page" class="page">
         <div class="progress-bar"></div>
+        <div id="pjax-page" class="pjax-page">
+            <h1>Welcome</h1>
+        </div>
     </div>
 </div>
 <div id="win" class="win">
     <div class="start-menu">
-        <div class="menu-item">
+        <a class="menu-item" data-href="/home">
+            <i class="icon i-home"></i>
+        </a>
+        <a class="menu-item" data-href="/users">
+            <i class="icon i-user"></i>
+        </a>
+        <a class="menu-item" data-href="/game">
             <i class="icon i-game"></i>
-        </div>
-        <div class="menu-item">
-            <i class="icon i-game"></i>
-        </div>
-        <div class="menu-item">
-            <i class="icon i-game"></i>
-        </div>
-        <div class="menu-item">
-            <i class="icon i-game"></i>
-        </div>
+        </a>
+        <a class="menu-item" data-href="/music">
+            <i class="icon i-music"></i>
+        </a>
+        <a class="menu-item" data-href="/star">
+            <i class="icon i-star"></i>
+        </a>
     </div>
 </div>
 
 <script src="/js/jquery.min.js"></script>
 <script>
     $(function () {
-        $('.progress-bar').addClass('finish');
+        $('.progress-bar').addClass('active');
         $('.logo').off('click').on('click', function () {
             $('#win').addClass('active').find('.start-menu').addClass('active');
-        })
+        });
         $('#win').off('click').on('click', function () {
             var _self = $(this);
             $(this).find('.start-menu').removeClass('active');
             window.setTimeout(function () {
                 _self.removeClass('active');
             }, 400);
-        })
+        });
+
+        var pjaxLink = $('a[data-href]');
+        if (pjaxLink.length > 0) {
+            $.each(pjaxLink, function (k, v) {
+                $(v).on('click', function (event) {
+                    event.preventDefault();
+                    var _self = $(this);
+                    var option = {
+                        url: _self.attr('data-href'),
+                        beforeAjax: function () {
+                            console.log('pjax start');
+                        },
+                        afterAjax: function () {
+                            console.log('pjax complete');
+                        }
+                    }
+                    pjaxHandle(option);
+                })
+            })
+        }
+
+        function pjaxHandle(option) {
+            if (option.beforeAjax) {
+                option.beforeAjax();
+            }
+            if (option.afterAjax) {
+                option.complete = option.afterAjax;
+            }
+            option.dataType = 'html';
+            option.type = 'get';
+            option.success = function (data) {
+                if (data) {
+                    $('#pjax-page').empty().append(data);
+                    history.pushState(option.url,'pjax',option.url);
+                }
+            }
+            $.ajax(option);
+        }
     });
 </script>
 </body>
