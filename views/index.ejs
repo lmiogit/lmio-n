@@ -16,27 +16,48 @@
         </div>
     </nav>
     <div id="page" class="page">
-        <div class="progress-bar"></div>
         <div id="pjax-page" class="pjax-page">
-            <h1>Welcome</h1>
+            <div id="music-widget" class="widget widget-default widget-active" data-type="widget" data-icon="#music">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <i class="icon i-music"></i>
+                        <b>Music</b>
+                        <div class="widget-control-pad">
+                            <div title="Fold" class="widget-control-btn widget-fold">
+                                <i class="icon i-category-r"></i>
+                            </div>
+                            <div title="Reload" class="widget-control-btn widget-reload">
+                                <i class="icon i-lighting"></i>
+                            </div>
+                            <div title="Close" class="widget-control-btn widget-close">
+                                <i class="icon i-wrong"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+
+                    </div>
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <div id="win" class="win">
     <div class="start-menu">
-        <a class="menu-item" data-href="/home">
+        <a class="menu-item" data-href="/home" data-type="page">
             <i class="icon i-home"></i>
         </a>
-        <a class="menu-item" data-href="/users">
+        <a class="menu-item" data-href="/users" data-type="page">
             <i class="icon i-user"></i>
         </a>
-        <a class="menu-item" data-href="/game">
+        <a class="menu-item" data-href="/game" data-type="page">
             <i class="icon i-game"></i>
         </a>
-        <a class="menu-item" data-href="/music">
+        <a class="menu-item" data-href="/music" data-type="get">
             <i class="icon i-music"></i>
         </a>
-        <a class="menu-item" data-href="/star">
+        <a class="menu-item" data-href="/star" data-type="post">
             <i class="icon i-star"></i>
         </a>
     </div>
@@ -57,7 +78,7 @@
             }, 400);
         });
 
-        var pjaxLink = $('a[data-href]');
+        var pjaxLink = $('a[data-type="page"]');
         if (pjaxLink.length > 0) {
             $.each(pjaxLink, function (k, v) {
                 $(v).on('click', function (event) {
@@ -89,8 +110,11 @@
             option.success = function (data) {
                 if (data) {
                     $('#pjax-page').empty().append(data);
-                    history.pushState(option.url,'pjax',option.url);
+                    history.pushState(option.url, 'pjax', option.url);
                 }
+            }
+            option.beforeSend = function (xhr) {
+                xhr.setRequestHeader("accessType","pjax")
             }
             $.ajax(option);
         }

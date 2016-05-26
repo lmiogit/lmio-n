@@ -23,20 +23,71 @@ body
   background #f5f5f5
   top: 0
   left: 0
-  .progress-bar
-    position absolute
-    top: 0
-    left -1px
-    width 0
-    height 2px
-    background linear-gradient(to right, light-color 0%, #ff0000 100%)
-    transition width 5s ease-in-out 0s
-    &.active
-      width 100%
   .pjax-page
     margin 8px
     width 100%
     height 100%
+
+
+
+.widget
+  position absolute
+  z-index 101
+  top 40px
+  left 40px
+  overflow hidden
+  .widget-title
+    height 30px
+    cursor default
+    line-height 30px
+    color #ffffff
+    position relative
+    padding 0 0 0 12px
+    .widget-control-pad
+      height 24px
+      position absolute
+      top 0
+      right 6px
+      line-height 24px
+      .widget-control-btn
+        display inline-block
+        cursor pointer
+        transition all .3s
+        width 24px
+        height 24px
+        text-align center
+        &.widget-close:hover
+          color #ff0000
+        &.widget-reload:hover
+          color #ffba54
+        &.widget-fold:hover
+          color #5fff9b
+  .widget-content
+    padding 20px
+  .progress-bar
+      position absolute
+      bottom: 0
+      left 0
+      width 0
+      height 2px
+      background linear-gradient(to right, light-color 0%, #ff0000 100%)
+      transition width 5s ease-in-out 0s
+      &.active
+        width 100%
+  &.widget-default
+    width 400px
+    height 200px
+    border none
+    border-radius 5px 5px 0 0
+    box-shadow 3px 3px 5px #aaaaaa
+    transition all .3s
+    &:hover
+      box-shadow 0 0 5px #6699cc
+    .widget-title
+      background #6699cc
+
+
+
 
 
 .nav
