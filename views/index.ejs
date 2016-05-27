@@ -17,15 +17,13 @@
     </nav>
     <div id="page" class="page">
         <div id="pjax-page" class="pjax-page">
-            <div id="music-widget" class="widget widget-default widget-active" data-type="widget" data-icon="#music">
+            <div id="music-widget" class="widget widget-default widget-active" data-type="widget"
+                 data-widget-type="music">
                 <div class="widget-box">
                     <div class="widget-title">
                         <i class="icon i-music"></i>
                         <b>Music</b>
                         <div class="widget-control-pad">
-                            <div title="Fold" class="widget-control-btn widget-fold">
-                                <i class="icon i-category-r"></i>
-                            </div>
                             <div title="Reload" class="widget-control-btn widget-reload">
                                 <i class="icon i-lighting"></i>
                             </div>
@@ -35,9 +33,8 @@
                         </div>
                     </div>
                     <div class="widget-content">
-
+                        载入中...
                     </div>
-                    <div class="progress-bar"></div>
                 </div>
             </div>
         </div>
@@ -45,16 +42,16 @@
 </div>
 <div id="win" class="win">
     <div class="start-menu">
-        <a class="menu-item" data-href="/home" data-type="page">
+        <a class="menu-item" data-href="/home" data-type="">
             <i class="icon i-home"></i>
         </a>
-        <a class="menu-item" data-href="/users" data-type="page">
+        <a class="menu-item" data-href="/users" data-type="">
             <i class="icon i-user"></i>
         </a>
-        <a class="menu-item" data-href="/game" data-type="page">
+        <a class="menu-item" data-href="/game" data-type="">
             <i class="icon i-game"></i>
         </a>
-        <a class="menu-item" data-href="/music" data-type="get">
+        <a class="menu-item" data-href="/music" data-type="">
             <i class="icon i-music"></i>
         </a>
         <a class="menu-item" data-href="/star" data-type="post">
@@ -66,59 +63,102 @@
 <script src="/js/jquery.min.js"></script>
 <script>
     $(function () {
-        $('.progress-bar').addClass('active');
-        $('.logo').off('click').on('click', function () {
-            $('#win').addClass('active').find('.start-menu').addClass('active');
-        });
-        $('#win').off('click').on('click', function () {
-            var _self = $(this);
-            $(this).find('.start-menu').removeClass('active');
-            window.setTimeout(function () {
-                _self.removeClass('active');
-            }, 400);
-        });
-
-        var pjaxLink = $('a[data-type="page"]');
-        if (pjaxLink.length > 0) {
-            $.each(pjaxLink, function (k, v) {
-                $(v).on('click', function (event) {
-                    event.preventDefault();
+        var action = {
+            start: function () {
+                $('.progress-bar').addClass('active');
+                $('.logo').off('click').on('click', function () {
+                    $('#win').addClass('active').find('.start-menu').addClass('active');
+                });
+                $('#win').off('click').on('click', function () {
                     var _self = $(this);
-                    var option = {
-                        url: _self.attr('data-href'),
-                        beforeAjax: function () {
-                            console.log('pjax start');
-                        },
-                        afterAjax: function () {
-                            console.log('pjax complete');
+                    $(this).find('.start-menu').removeClass('active');
+                    window.setTimeout(function () {
+                        _self.removeClass('active');
+                    }, 400);
+                });
+                WidgetModule.init();
+            }
+        }
+
+        var WidgetModule = {
+            list: [],
+            init: function () {
+                var widgets = $('.widget');
+                WidgetModule.load(widgets);
+                WidgetModule.drag(widgets);
+            },
+            drag: function (widgets) {
+                $.each(widgets, function (k, v) {
+                    $(v).find('.widget-title').off('mousedown').on('mousedown', function (event) {
+                        event.preventDefault();
+                        var _self = $(this);
+                        _self.addClass('onClick');
+                        var widget = _self.parents('.widget');
+                        var w = widget.position();
+                        var lx = event.pageX - 60 - w.left;
+                        var ly = event.pageY - w.top;
+                        drag({
+                            src: widget,
+                            minX: 4,
+                            minY: 4,
+                            offsetX: lx,
+                            offsetY: ly,
+                            pageOffsetX: 60,
+                            pageOffsetY: 0,
+                            callback: function () {
+                                _self.removeClass('onClick');
+                            }
+                        })
+                    })
+                })
+            },
+            load: function (widget) {
+                var type = widget.attr('data-widget-type');
+                var option = {
+                    url: '/widgets/' + type,
+                    dataType: 'html',
+                    success: function (html) {
+                        if (html) {
+                            widget.find('.widget-content').empty().append(html);
                         }
                     }
-                    pjaxHandle(option);
-                })
-            })
+                }
+                AjaxHandle.handle(option)
+            }
         }
 
-        function pjaxHandle(option) {
-            if (option.beforeAjax) {
-                option.beforeAjax();
+        var AjaxHandle = {
+            handle: function (option) {
+                $.ajax(option);
             }
-            if (option.afterAjax) {
-                option.complete = option.afterAjax;
-            }
-            option.dataType = 'html';
-            option.type = 'get';
-            option.success = function (data) {
-                if (data) {
-                    $('#pjax-page').empty().append(data);
-                    history.pushState(option.url, 'pjax', option.url);
-                }
-            }
-            option.beforeSend = function (xhr) {
-                xhr.setRequestHeader("accessType","pjax")
-            }
-            $.ajax(option);
         }
+
+        action.start();
     });
+</script>
+<script>
+    function drag(option) {
+        var obj = option.src;
+        var handle = option.callback;
+        var minX = option.minX;
+        var minY = option.minY;
+        var offsetX = option.offsetX;
+        var offsetY = option.offsetY;
+        var pageOffsetX = option.pageOffsetX;
+        var pageOffsetY = option.pageOffsetY;
+        $('*').off('mousemove').on('mousemove', function (event) {
+            event.preventDefault();
+            var x = event.pageX - offsetX - pageOffsetX;
+            var y = event.pageY - offsetY - pageOffsetY;
+            x = x <= minX ? minX : x;
+            y = y <= minY ? minY : y;
+            obj.css({left: x, top: y});
+        });
+        $('*').off('mouseup').on('mouseup', function () {
+            $('*').off('mousemove');
+            handle();
+        });
+    }
 </script>
 </body>
 </html>

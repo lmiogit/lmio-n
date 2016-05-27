@@ -6,9 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var home = require('./routes/home');
-var music = require('./routes/music');
+var widgets = require('./routes/widgets');
 
 var app = express();
 
@@ -26,9 +24,7 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/home', home);
-app.use('/music', music);
+app.use('/widgets', widgets);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
