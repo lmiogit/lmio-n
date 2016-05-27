@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+    <link rel='stylesheet' href='/css/index.css'/>
+    <link rel="stylesheet" href="/css/iconfont.css">
+</head>
+<body>
+<div id="body" class="body">
+    <nav id="nav" class="nav">
+        <div class="logo">
+            L
+        </div>
+    </nav>
+    <div id="page" class="page">
+    </div>
+</div>
+<div id="win" class="win">
+    <div class="start-menu">
+        <a class="menu-item" data-widget-href="music" data-widget-name="Music" data-widget-id="music-widget"
+           data-type="shortcut">
+            <i class="icon i-music"></i>
+        </a>
+    </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script>
+    $(function () {
+        var action = {
+            start: function () {
+                $('.progress-bar').addClass('active');
+                $('.logo').off('click').on('click', function () {
+                    $('#win').addClass('active').find('.start-menu').addClass('active');
+                });
+                $('#win').off('click').on('click', function () {
+                    var _self = $(this);
+                    $(this).find('.start-menu').removeClass('active');
+                    window.setTimeout(function () {
+                        _self.removeClass('active');
+                    }, 400);
+                });
+                WidgetModule.init();
+            }
+        }
+        var WidgetModule = {
+            list: [],
+            init: function () {
+                var shortcut = $('a[data-type="shortcut"]');
+                if (shortcut.length > 0) {
+                    shortcut.off('click').on('click', function (event) {
+                        event.preventDefault();
+                        var _self = $(this);
+                        var wName = _self.attr('data-widget-name');
+                        var wId = _self.attr('data-widget-id');
+                        var wHref = _self.attr('data-widget-href');
+                        if (WidgetModule.list.indexOf(wId) < 0) {
+                            WidgetModule.createBox(wName, wId, wHref, function (widgets) {
+                                WidgetModule.list.push(wId);
+                                WidgetModule.load(widgets);
+                                WidgetModule.drag(widgets);
+                            });
+                        }
+                    })
+                }
+            },
+            drag: function (widget) {
+                var obj = widget
+                obj.find('.widget-title').off('mousedown').on('mousedown', function (event) {
+                    event.preventDefault();
+                    var _self = $(this);
+                    _self.addClass('onClick');
+                    var w = obj.position();
+                    var lx = event.pageX - 60 - w.left;
+                    var ly = event.pageY - w.top;
+                    drag({
+                        src: obj,
+                        minX: 4,
+                        minY: 4,
+                        offsetX: lx,
+                        offsetY: ly,
+                        pageOffsetX: 60,
+                        pageOffsetY: 0,
+                        callback: function () {
+                            _self.removeClass('onClick');
+                        }
+                    })
+                })
+            },
+            load: function (widget) {
+                var href = widget.attr('data-widget-type');
+                var option = {
+                    url: '/widgets/' + href,
+                    dataType: 'html',
+                    success: function (html) {
+                        if (html) {
+                            widget.find('.widget-content').empty().append(html);
+                        }
+                    }
+                }
+                AjaxHandle.handle(option);
+            },
+            createBox: function (name, id, href, cb) {
+                var templete = '' +
+                        '<div id="' + id + '" class="widget widget-default widget-active" data-type="widget" data-widget-type="' + href + '">' +
+                        '<div class="widget-box">' +
+                        '<div class="widget-title">' +
+                        '<b>' + name + '</b>' +
+                        '<div class="widget-control-pad">' +
+                        '<div title="Reload" class="widget-control-btn widget-reload">' +
+                        '<i class="icon i-lighting"></i>' +
+                        '</div>' +
+                        '<div title="Close" class="widget-control-btn widget-close">' +
+                        '<i class="icon i-wrong"></i>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="widget-content">' +
+                        '载入中...' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                $('#page').append(templete);
+                if (cb) {
+                    cb($('#' + id));
+                }
+            }
+        }
+        var AjaxHandle = {
+            handle: function (option) {
+                $.ajax(option);
+            }
+        }
+        action.start();
+    });
+</script>
+<script>
+    function drag(option) {
+        var obj = option.src;
+        var handle = option.callback;
+        var minX = option.minX;
+        var minY = option.minY;
+        var offsetX = option.offsetX;
+        var offsetY = option.offsetY;
+        var pageOffsetX = option.pageOffsetX;
+        var pageOffsetY = option.pageOffsetY;
+        $('*').off('mousemove').on('mousemove', function (event) {
+            event.preventDefault();
+            var x = event.pageX - offsetX - pageOffsetX;
+            var y = event.pageY - offsetY - pageOffsetY;
+            x = x <= minX ? minX : x;
+            y = y <= minY ? minY : y;
+            obj.css({left: x, top: y});
+        });
+        $('*').off('mouseup').on('mouseup', function () {
+            $('*').off('mousemove');
+            handle();
+        });
+    }
+</script>
+</body>
+</html>
