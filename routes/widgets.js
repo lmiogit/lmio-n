@@ -10,4 +10,8 @@ router.get('/music', function (req, res, next) {
     res.render('widgets/music');
 });
 
+router.get('/game',function(req,res,next){
+    res.render('widgets/game') 
+});
+
 module.exports = router;
