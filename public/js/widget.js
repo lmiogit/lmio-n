@@ -19,9 +19,13 @@ var WidgetModule = {
                             event.preventDefault();
                             WidgetModule.closeWidget(_id);
                         });
-                        widget.find('.widget-reload').off('click').on('click',function (event) {
+                        widget.find('.widget-reload').off('click').on('click', function (event) {
                             event.preventDefault();
                             WidgetModule.load(widget);
+                        });
+                        widget.off('mousedown').on('mousedown', function () {
+                            $(this).siblings('.active').removeClass('active');
+                            $(this).addClass('active');
                         });
                     });
                 }
@@ -29,11 +33,11 @@ var WidgetModule = {
         }
     },
     drag: function (widget) {
-        var obj = widget
+        var obj = widget;
         obj.find('.widget-title').off('mousedown').on('mousedown', function (event) {
             event.preventDefault();
             var _self = $(this);
-            _self.addClass('onClick');
+            _self.addClass('onDrag');
             var w = obj.position();
             var lx = event.pageX - 60 - w.left;
             var ly = event.pageY - w.top;
@@ -46,7 +50,7 @@ var WidgetModule = {
                 pageOffsetX: 60,
                 pageOffsetY: 0,
                 callback: function () {
-                    _self.removeClass('onClick');
+                    _self.removeClass('onDrag');
                 }
             })
         })
@@ -61,12 +65,12 @@ var WidgetModule = {
                     _widget.find('.widget-content').empty().append(html);
                 }
             }
-        }
+        };
         AjaxHandle.handle(option);
     },
     createBox: function (name, id, href, cb) {
         var templete = '' +
-            '<div id="' + id + '" class="widget widget-default widget-active" data-type="widget" data-widget-type="' + href + '">' +
+            '<div id="' + id + '" class="widget widget-default fade" data-type="widget" data-widget-type="' + href + '">' +
             '<div class="widget-box">' +
             '<div class="widget-title">' +
             '<b>' + name + '</b>' +
@@ -94,4 +98,4 @@ var WidgetModule = {
         WidgetModule.list.splice(WidgetModule.list.indexOf(id), 1);
         console.log(WidgetModule.list);
     }
-}
+};

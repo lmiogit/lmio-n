@@ -8,11 +8,9 @@ light-border-color = #f5f5f5
 sm-font-size = 12px
 lg-font-size = 14px
 
-
 body
   color: normal-font-color
   background transparent no-repeat
-
 
 .page
   position fixed
@@ -28,8 +26,6 @@ body
     width 100%
     height 100%
 
-
-
 .widget
   position absolute
   z-index 101
@@ -43,8 +39,6 @@ body
     color #ffffff
     position relative
     padding 0 0 0 12px
-    &.onClick
-      cursor move
     .widget-control-pad
       height 24px
       position absolute
@@ -62,21 +56,20 @@ body
           background-color #ff0000
         &.widget-reload:hover
           background-color #ffba54
-
   .widget-content
-    background #ffffff
     padding 20px
   .progress-bar
-      position absolute
-      bottom: 0
-      left 0
-      width 0
-      height 2px
-      background linear-gradient(to right, light-color 0%, #ff0000 100%)
-      transition width 5s ease-in-out 0s
-      &.active
-        width 100%
+    position absolute
+    bottom: 0
+    left 0
+    width 0
+    height 2px
+    background linear-gradient(to right, light-color 0%, #ff0000 100%)
+    transition width 5s ease-in-out 0s
+    &.active
+      width 100%
   &.widget-default
+    background #ffffff
     min-width 400px
     min-height 200px
     border none
@@ -84,13 +77,12 @@ body
     box-shadow 3px 3px 5px #aaaaaa
     transition box-shadow .3s
     &:hover
-      box-shadow 0 0 5px #6699cc
+      box-shadow 0 0 10px #6699cc
     .widget-title
       background #6699cc
-
-
-
-
+  &.active
+    z-index 110
+    box-shadow 0 0 10px #6699cc
 
 .nav
   width 60px
@@ -119,7 +111,6 @@ body
     position fixed
     bottom 10px
     left 0
-
 
 #win
   position fixed

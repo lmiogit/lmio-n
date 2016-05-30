@@ -19,4 +19,8 @@ function drag(option) {
         $('*').off('mousemove');
         handle();
     });
+    $('body').off('mouseleave').on('mouseleave', function () {
+        $('*').off('mousemove');
+        handle();
+    })
 }

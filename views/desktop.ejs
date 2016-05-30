@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
-    <link rel='stylesheet' href='/css/index.css'/>
-    <link rel="stylesheet" href="/css/iconfont.css">
 </head>
 <body>
 <div id="body" class="body">
@@ -16,6 +14,9 @@
         </div>
     </nav>
     <div id="page" class="page">
+        <form action="" enctype="multipart/form-data">
+            <input type="file">
+        </form>
     </div>
 </div>
 <div id="win" class="win">
@@ -42,6 +43,11 @@
                 $('.logo').off('click').on('click', function () {
                     $('#win').addClass('active').find('.start-menu').addClass('active');
                 });
+                window.setTimeout(function () {
+                    var css = $("<link rel='stylesheet' href='/css/index.css'/>" +
+                            "<link rel='stylesheet' href='/css/iconfont.css'>");
+                    $('head').append(css);
+                }, 3000);
                 $('#win').off('click').on('click', function () {
                     var _self = $(this);
                     $(this).find('.start-menu').removeClass('active');
@@ -50,6 +56,10 @@
                     }, 300);
                 });
                 WidgetModule.init();
+
+                $('input').on('change', function () {
+
+                })
             }
         }
         action.start();
