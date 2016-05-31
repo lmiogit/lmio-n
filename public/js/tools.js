@@ -22,5 +22,5 @@ function drag(option) {
     $('body').off('mouseleave').on('mouseleave', function () {
         $('*').off('mousemove');
         handle();
-    })
+    });
 }

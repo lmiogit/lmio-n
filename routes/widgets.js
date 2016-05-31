@@ -14,4 +14,8 @@ router.get('/game',function(req,res,next){
     res.render('widgets/game') 
 });
 
+router.get('/image',function(req,res,next){
+    res.render('widgets/image') 
+});
+
 module.exports = router;
