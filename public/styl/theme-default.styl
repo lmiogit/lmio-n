@@ -58,6 +58,8 @@ body
           background-color #ffba54
   .widget-content
     padding 20px
+    overflow auto
+    height inherit
   .progress-bar
     position absolute
     bottom: 0
@@ -70,9 +72,10 @@ body
       width 100%
   &.widget-default
     background #ffffff
-    min-width 400px
-    min-height 200px
-    border none
+    width 400px
+    height 200px
+    border 1px solid #6699cc
+    border-top none
     border-radius 5px 5px 0 0
     transition box-shadow .3s
     &:hover
@@ -151,3 +154,4 @@ body
       &:hover
         border-color #ffffff
         border-radius 15px
+

@@ -14,7 +14,6 @@ var WidgetModule = {
                         var _id = widget.attr('id');
                         WidgetModule.list.push(_id);
                         WidgetModule.load(widget);
-                        WidgetModule.drag(widget);
                         widget.find('.widget-close').off('click').on('click', function (event) {
                             event.preventDefault();
                             WidgetModule.closeWidget(_id);
@@ -27,39 +26,17 @@ var WidgetModule = {
                             $(this).siblings('.active').removeClass('active');
                             $(this).addClass('active');
                         });
+                        ResizeHandle.init(widget);
+                        DragHandle.init(widget);
                     });
                 }
             })
         }
     },
-    drag: function (widget) {
-        var obj = widget;
-        obj.find('.widget-title').off('mousedown').on('mousedown', function (event) {
-            event.preventDefault();
-            var _self = $(this);
-            _self.addClass('onDrag');
-            var w = obj.position();
-            var lx = event.pageX - 60 - w.left;
-            var ly = event.pageY - w.top;
-            drag({
-                src: obj,
-                minX: 4,
-                minY: 4,
-                offsetX: lx,
-                offsetY: ly,
-                pageOffsetX: 60,
-                pageOffsetY: 0,
-                callback: function () {
-                    _self.removeClass('onDrag');
-                }
-            })
-        })
-    },
     load: function (_widget) {
         var href = _widget.attr('data-widget-type');
         var option = {
             url: '/widgets/' + href,
-            dataType: 'html',
             success: function (html) {
                 if (html) {
                     _widget.find('.widget-content').empty().append(html);
@@ -84,7 +61,7 @@ var WidgetModule = {
             '</div>' +
             '</div>' +
             '<div class="widget-content">' +
-            '载入中...' +
+            'Loading...' +
             '</div>' +
             '</div>' +
             '</div>';

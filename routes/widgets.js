@@ -10,12 +10,12 @@ router.get('/music', function (req, res, next) {
     res.render('widgets/music');
 });
 
-router.get('/game',function(req,res,next){
-    res.render('widgets/game') 
+router.get('/game', function (req, res, next) {
+    res.render('widgets/game');
 });
 
-router.get('/image',function(req,res,next){
-    res.render('widgets/image') 
+router.get('/image', function (req, res, next) {
+    res.render('widgets/image', {widgetName: 'image'});
 });
 
 module.exports = router;
