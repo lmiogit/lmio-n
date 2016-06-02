@@ -47,7 +47,7 @@ var WidgetModule = {
     },
     createBox: function (name, id, href, cb) {
         var templete = '' +
-            '<div id="' + id + '" class="widget widget-default fade" data-type="widget" data-widget-type="' + href + '">' +
+            '<div id="' + id + '" class="widget widget-default" data-type="widget" data-widget-type="' + href + '">' +
             '<div class="widget-box">' +
             '<div class="widget-title">' +
             '<b>' + name + '</b>' +

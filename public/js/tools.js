@@ -64,7 +64,7 @@ var AjaxHandle = {
 var ImageUpload = {
     init: function () {
         var inputs = $('input[type="file"][data-type="uploadFile"]');
-        inputs.on('change', function (event) {
+        inputs.off('change').on('change', function (event) {
             event.preventDefault();
             var _self = $(this);
             var option = {

@@ -14,6 +14,22 @@
         </div>
     </nav>
     <div id="page" class="page">
+        <div class="notice">
+            <div class="notice-icon">
+                <i class="icon i-alert"></i>
+            </div>
+            <div class="notice-message">
+
+            </div>
+            <div class="notice-control">
+
+            </div>
+        </div>
+
+        <input type="number" id="dam">
+        <input type="number" id="sin">
+        <div id="t"></div>
+        <button>acc</button>
     </div>
 </div>
 <div id="win" class="win">
@@ -55,6 +71,11 @@
                     window.setTimeout(function () {
                         _self.removeClass('active');
                     }, 300);
+                });
+                $('button').on('click', function () {
+                    var sine = Math.sin($('#sin').val() * 0.017453293);
+                    var t = $('#dam').val() / sine;
+                    $('#t').text(t);
                 });
                 WidgetModule.init();
             }
