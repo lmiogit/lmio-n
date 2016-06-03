@@ -28,6 +28,8 @@ var WidgetModule = {
                         });
                         ResizeHandle.init(widget);
                         DragHandle.init(widget);
+                        widget.siblings('.active').removeClass('active');
+                        widget.addClass('active');
                     });
                 }
             })
