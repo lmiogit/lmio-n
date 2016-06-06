@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('desktop', { title: 'Lmio' });
+  res.render('error', { title: 'Lmio' });
 });
 
 module.exports = router;
