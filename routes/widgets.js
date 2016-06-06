@@ -18,4 +18,8 @@ router.get('/image', function (req, res, next) {
     res.render('widgets/image', {widgetName: 'image'});
 });
 
+router.get('/github', function (req, res, next) {
+    res.render('widgets/github', {});
+});
+
 module.exports = router;

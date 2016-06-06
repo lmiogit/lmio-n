@@ -1,5 +1,5 @@
 var DragHandle = {
-    init: function (obj) {
+    init: function (obj, onMove, onEnd) {
         var _obj = obj;
         obj.find('.widget-title').off('mousedown').on('mousedown', function (event) {
             event.preventDefault();
@@ -15,21 +15,30 @@ var DragHandle = {
                 x = x <= 4 ? 4 : x;
                 y = y <= 4 ? 4 : y;
                 _obj.css({left: x, top: y});
+                if (arguments.length > 1) {
+                    onMove();
+                }
             });
             $('*').off('mouseup').on('mouseup', function () {
                 $('*').off('mousemove');
                 _self.removeClass('onDrag');
+                if (arguments.length > 2) {
+                    onEnd();
+                }
             });
             $('body').off('mouseleave').on('mouseleave', function () {
                 $('*').off('mousemove');
                 _self.removeClass('onDrag');
+                if (arguments.length > 2) {
+                    onEnd();
+                }
             });
         });
     }
 };
 
 var ResizeHandle = {
-    init: function (obj) {
+    init: function (obj, onMove, onEnd) {
         var _obj = obj;
         obj.append('<i class="resize"></i>');
         obj.find('.resize').off('mousedown').on('mousedown', function (event) {
@@ -44,12 +53,21 @@ var ResizeHandle = {
                 x = x <= 400 ? 400 : x;
                 y = y <= 200 ? 200 : y;
                 _obj.css({'width': x, 'height': y});
+                if (arguments.length > 1) {
+                    onMove();
+                }
             });
             $('*').off('mouseup').on('mouseup', function () {
                 $('*').off('mousemove');
+                if (arguments.length > 2) {
+                    onEnd();
+                }
             });
             $('body').off('mouseleave').on('mouseleave', function () {
                 $('*').off('mousemove');
+                if (arguments.length > 2) {
+                    onEnd();
+                }
             });
         })
     }
@@ -94,7 +112,7 @@ var ImageUpload = {
             }
         });
     },
-    canvasControl:function(){
-        
+    canvasControl: function () {
+
     }
 };
