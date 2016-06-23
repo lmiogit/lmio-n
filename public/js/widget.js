@@ -26,7 +26,7 @@ var WidgetModule = {
                             $(this).siblings('.active').removeClass('active');
                             $(this).addClass('active');
                         });
-                        ResizeHandle.init(widget);
+                        ResizeHandle.on(widget);
                         DragHandle.init(widget);
                         widget.siblings('.active').removeClass('active');
                         widget.addClass('active');
