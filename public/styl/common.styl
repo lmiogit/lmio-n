@@ -2,11 +2,11 @@
   box-sizing border-box
 
 body
-  font:12px 'Open Sans','sans-serif'
+  font: 12px 'Open Sans', 'sans-serif'
   padding 0
   margin 0
 
-ul,ol
+ul, ol
   padding 0
   margin 0
 
@@ -29,4 +29,24 @@ a
   width 10px
   height 10px
   border-right 3px solid #6699cc
-  border-bottom  3px solid #6699cc
+  border-bottom 3px solid #6699cc
+
+.btn
+  border 1px solid #6699cc
+  background #6699cc
+  font-size 12px
+  border-radius 4px
+  padding 6px 8px
+  color #fff
+  cursor pointer
+  transition all .3s
+  display inline-block
+  & > .icon
+    top 1pt
+    position relative
+    margin-right 6px
+  &:hover
+    border-color #66ccff
+    background-color #66ccff
+    box-shadow 0 2px 2px 0 rgba(0, 0, 0, .3);
+

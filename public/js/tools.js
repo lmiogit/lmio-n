@@ -24,7 +24,7 @@ var DragHandle = {
             MouseControlHandle.complete({
                 base: _base,
                 callback: [function () {
-                    _self.removeClass('onDrag')
+                    _self.removeClass('onDrag');
                 }, onEnd]
             })
         });
@@ -70,7 +70,11 @@ var MouseControlHandle = {
             var args = event.data;
             args.base.off('mousemove');
             if (typeof args.callback == 'object') {
-                args.callback();
+                for (var i = 0; i < args.callback.length; i++) {
+                    if (typeof args.callback[i] == 'function') {
+                        args.callback[i]();
+                    }
+                }
             }
         }
     }
@@ -107,7 +111,8 @@ var ImageUpload = {
                     var reader = new FileReader();
                     reader.onloadend = (function (options) {
                         return function (e) {
-                            $(options.thumb).append('<img src="' + e.target.result + '">');
+                            // $(options.thumb).append('<img src="' + e.target.result + '">');
+                            ImageUpload.canvasControl($(options.thumb), e.target.result);
                         }
                     })(option);
                     reader.readAsDataURL(files[i]);
@@ -115,7 +120,38 @@ var ImageUpload = {
             }
         });
     },
-    canvasControl: function () {
+    canvasControl: function (space, image) {
+        var _canvas = $('<canvas class="image-canvas"/>');
+        space.append(_canvas);
+        var canvasOb = _canvas[0];
+        var context = canvasOb.getContext('2d');
+        var img = new Image();
+        img.src = image;
+        context.drawImage(img, 0, 0);
+    }
+};
+
+
+var MusicPlayer = {
+    init: function () {
+        var controler = this;
+    },
+    loadList: function () {
 
     }
+};
+
+
+var Playlist = function (name, author, tags, length, content) {
+    this.name = name;
+    this.author = author;
+    this.tags = tags;
+    this.content = content;
+};
+
+var Song = function (name, author, lrc, src) {
+    this.name = name;
+    this.author = author;
+    this.lrc = lrc;
+    this.src = src;
 };
