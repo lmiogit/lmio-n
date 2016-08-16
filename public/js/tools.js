@@ -133,25 +133,63 @@ var ImageUpload = {
 
 
 var MusicPlayer = {
-    init: function () {
-        var controler = this;
+    init: function (url, audio, list) {
+        var controller = this;
+        controller.loadList(url, function (C) {
+            C.playlist.showList(list);
+        });
     },
-    loadList: function () {
-
+    loadList: function (url, fn) {
+        var option = {
+            url: url,
+            dataType: 'json',
+            success: function (result) {
+                if (result) {
+                    MusicPlayer.playlist = new Playlist(result);
+                    if (fn) {
+                        fn(MusicPlayer);
+                    }
+                }
+            }
+        };
+        AjaxHandle.handle(option);
     }
 };
 
 
-var Playlist = function (name, author, tags, length, content) {
-    this.name = name;
-    this.author = author;
-    this.tags = tags;
-    this.content = content;
+var Playlist = function (obj) {
+    this.name = obj.name;
+    this.tags = obj.tags;
+    var content = obj.content;
+    var songArr = [];
+    if (content.length > 0) {
+        for (var i = 0; i < content.length; i++) {
+            var s = new Song(content[i]);
+            songArr.push(s);
+        }
+    }
+    this.content = songArr;
+    this.showList = function (target) {
+        var space = target;
+
+        var plSpace = space.find('.playlist');
+        
+        var songs = this.content;
+
+        if (songs.length > 0) {
+            for (var i = 0; i < songs.length; i++) {
+                plSpace.append($('<div class="song">' + songs[i].name + '</div>'))
+            }
+        }
+
+    }
 };
 
-var Song = function (name, author, lrc, src) {
-    this.name = name;
-    this.author = author;
-    this.lrc = lrc;
-    this.src = src;
+var Song = function (obj) {
+    this.name = obj.name;
+    this.author = obj.author;
+    this.lrc = obj.lrc;
+    this.src = obj.src;
+
+
 };

@@ -1,21 +1,21 @@
-<audio src="/audio/0001.mp3" autoplay controls loop>
-    Sorry your bower doesn't support audio!!!
-</audio>
-
-<div class="player">
+<div id="player" class="player">
     <div class="player-box">
         <div class="player-lrc">
-
+            <span>After Altale</span>
+            <span>Sakuzyo</span>
         </div>
         <div class="player-control">
-            <div class="player-prev">
+            <div class="player-prev control-btn">
                 <i class="icon i-prev"></i>
             </div>
-            <div class="player-play">
+            <div class="player-play control-btn">
                 <i class="icon i-play"></i>
             </div>
-            <div class="player-next">
+            <div class="player-next control-btn">
                 <i class="icon i-next"></i>
+            </div>
+            <div class="player-mode control-btn">
+                <i class="icon i-random"></i>
             </div>
             <div class="player-progress">
                 <div class="player-progress-box">
@@ -29,15 +29,16 @@
                     <div class="player-volume-btn"></div>
                 </div>
             </div>
-            <div class="player-mode">
-                <i class="icon i-random"></i>
-            </div>
+
         </div>
-        <div class="player-music-list">
+        <div class="playlist">
 
         </div>
     </div>
+    <audio id="audio" src="/audio/0001.mp3" autoplay loop>
+        Sorry your bower doesn't support audio!!!
+    </audio>
 </div>
 <script>
-    MusicPlayer.init();
+    MusicPlayer.init('/resource/playlist',$('#audio'),$('#player'));
 </script>

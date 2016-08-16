@@ -21,6 +21,8 @@ body
   background #f5f5f5
   top: 0
   left: 0
+  background url("http://www.deskcar.com/desktop/fengjing/2013812103350/11.jpg") center 100%
+  background-size cover
   .pjax-page
     margin 8px
     width 100%
@@ -71,17 +73,17 @@ body
     &.active
       width 100%
   &.widget-default
-    background #ffffff
+    background rgba(0, 0, 0, .3)
     width 400px
     height 200px
-    border 1px solid #6699cc
+    border 1px solid transparent
     border-top none
     border-radius 5px 5px 0 0
     transition box-shadow .3s
     &:hover
       box-shadow 0 0 10px #6699cc
     .widget-title
-      background #6699cc
+      background transparent
   &.active
     z-index 110
     box-shadow 0 0 10px #6699cc
@@ -197,3 +199,25 @@ body
 
 #musicWidget
   display block
+  .player
+    color #f5f5f5
+    .player-box
+      .player-lrc
+        font-size 14px
+        line-height 20px
+        height 60px
+        overflow scroll
+        span
+          display block
+      .player-control
+        border-top 1px solid #f5f5f5
+        padding 4px 0
+        overflow hidden
+        .control-btn
+          font-size 20px
+          line-height 20px
+          float left
+          cursor pointer
+
+
+

@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var playlistModel = require('../sys/model/playlistModel');
 
 
 router.get('/', function (req, res, next) {
@@ -8,7 +7,19 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/playlist', function (req, res, next) {
-    playlistModel.getOneById(0, function () {
+    res.send({
+        name: 'TestList',
+        tags: [{
+            name: 'jazz'
+        }, {
+            name: 'new-age'
+        }],
+        content: [{
+            name: 'After Altale',
+            author: 'Sakuzyo',
+            lrc: '',
+            src: '/audio/0001.mp3'
+        }]
     });
 });
 
