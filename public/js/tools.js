@@ -133,11 +133,44 @@ var ImageUpload = {
 
 
 var MusicPlayer = {
-    init: function (url, audio, list) {
-        var controller = this;
-        controller.loadList(url, function (C) {
-            C.playlist.showList(list);
+    init: function (url, audio, space) {
+        MusicPlayer.loadList(url, function (C) {
+            C.playlist.showList(space);
+            MusicPlayer.space = space;
+
+            MusicPlayer.audio = audio.get(0);
+
+            MusicPlayer.addEvent();
+
+            MusicPlayer.loadSong(MusicPlayer.playlist.content[0]);
         });
+    },
+    play: function () {
+        MusicPlayer.audio.play();
+    },
+    pause: function () {
+        MusicPlayer.audio.pause();
+    },
+    addEvent: function () {
+        var controlBtn = MusicPlayer.space.find('.control-btn');
+        controlBtn.on('click', function () {
+            var action = $(this).attr('data-play-control');
+            if (action == 'prev') {
+                //prev
+            } else if (action == 'next') {
+                //next
+            } else if (action == 'play&pause') {
+                //play&pause
+                if (MusicPlayer.audio.paused) {
+                    MusicPlayer.play();
+                } else {
+                    MusicPlayer.pause();
+                }
+            }
+        });
+
+        var progress = MusicPlayer.space.find('.player-progress');
+
     },
     loadList: function (url, fn) {
         var option = {
@@ -153,6 +186,11 @@ var MusicPlayer = {
             }
         };
         AjaxHandle.handle(option);
+    },
+    loadSong: function (Song) {
+        $(MusicPlayer.audio).attr('src', Song.src);
+        var duration = MusicPlayer.audio.duration;
+
     }
 };
 
@@ -173,7 +211,7 @@ var Playlist = function (obj) {
         var space = target;
 
         var plSpace = space.find('.playlist');
-        
+
         var songs = this.content;
 
         if (songs.length > 0) {
@@ -190,6 +228,4 @@ var Song = function (obj) {
     this.author = obj.author;
     this.lrc = obj.lrc;
     this.src = obj.src;
-
-
 };

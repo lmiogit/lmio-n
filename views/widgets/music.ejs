@@ -5,16 +5,16 @@
             <span>Sakuzyo</span>
         </div>
         <div class="player-control">
-            <div class="player-prev control-btn">
+            <div class="player-prev control-btn" data-play-control="prev">
                 <i class="icon i-prev"></i>
             </div>
-            <div class="player-play control-btn">
+            <div class="player-play control-btn" data-play-control="play&pause">
                 <i class="icon i-play"></i>
             </div>
-            <div class="player-next control-btn">
+            <div class="player-next control-btn" data-play-control="next">
                 <i class="icon i-next"></i>
             </div>
-            <div class="player-mode control-btn">
+            <div class="player-mode control-btn" data-play-control="mode">
                 <i class="icon i-random"></i>
             </div>
             <div class="player-progress">
@@ -29,13 +29,12 @@
                     <div class="player-volume-btn"></div>
                 </div>
             </div>
-
         </div>
         <div class="playlist">
 
         </div>
     </div>
-    <audio id="audio" src="/audio/0001.mp3" autoplay loop>
+    <audio id="audio" src="">
         Sorry your bower doesn't support audio!!!
     </audio>
 </div>
