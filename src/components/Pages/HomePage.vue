@@ -1,6 +1,6 @@
 <template>
   <div id="HomePage" data-id="HomePage" data-route-id="HomePage">
-    <NavBar :floors="homeStore.construct.floors"></NavBar>
+    <NavBar></NavBar>
     <Floor v-for="(item, index ) in homeStore.construct.floors" :key="index" :floor="item"></Floor>
     <FootBar></FootBar>
   </div>
