@@ -2,9 +2,7 @@
   <nav>
     <ul class="nav-ul">
       <li class="nav-ul-li">Logo</li>
-      <li class="nav-ul-li">
-        <UserBar></UserBar>
-      </li>
+      <li class="nav-ul-li">About</li>
     </ul>
   </nav>
 </template>

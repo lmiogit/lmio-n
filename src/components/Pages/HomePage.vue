@@ -1,7 +1,9 @@
 <template>
   <div id="HomePage" data-id="HomePage" data-route-id="HomePage">
     <NavBar></NavBar>
-    <Floor v-for="(item, index ) in homeStore.construct.floors" :key="index" :floor="item"></Floor>
+    <div class="floor-list">
+      <Floor v-for="(item, index ) in homeStore.construct.floors" :key="index" :floor="item"></Floor>
+    </div>
     <FootBar></FootBar>
   </div>
 </template>

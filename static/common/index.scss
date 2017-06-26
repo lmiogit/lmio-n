@@ -28,3 +28,19 @@ input {
 a, div, section, nav, span, p, ul, li {
   display: $MAIN_DISPLAY;
 }
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: $MAIN_DISPLAY;
+}
+
+.hide-important {
+  display: none !important;
+}
+
+.show-important {
+  display: $MAIN_DISPLAY !important;
+}

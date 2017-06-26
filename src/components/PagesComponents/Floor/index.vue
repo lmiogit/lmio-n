@@ -1,19 +1,25 @@
 <template>
   <div class="floor">
-    <h3>{{ floor.name }}</h3>
-    <component :is="floor.components.desc" :text="floor.desc"></component>
-    <hr>
+    <div class="floor-content">
+      <div class="floor-title">{{ name }}</div>
+      <Description :text="desc"></Description>
+    </div>
   </div>
 </template>
 <script>
+  import Description from './Description.vue';
   export default {
+    components: {
+      Description
+    },
     name: 'Floor',
     data() {
-      return {};
+      return {...this.floor};
     },
     props: {
       floor: [Object]
     },
-    created() {}
+    created() {
+    }
   };
 </script>
