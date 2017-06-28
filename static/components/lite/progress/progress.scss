@@ -1,0 +1,7 @@
+.progress {
+  width: 100%;
+  position: fixed;
+  height: 2px;
+  z-index: $UPPER_MOST;
+  background-image: linear-gradient(to left, #00FF00, #FF0000);
+}

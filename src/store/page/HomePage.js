@@ -1,6 +1,3 @@
-/**
- * Created by hand on 2017/6/8.
- */
 class Floor {
   constructor(obj) {
     this.name = obj.name;
@@ -37,7 +34,5 @@ config.forEach(value => {
 });
 
 export default {
-  construct: {
-    floors: fList
-  }
+  floors: {...fList}
 };

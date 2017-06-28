@@ -9,7 +9,9 @@
 //common
 @import "common/index";
 //Pages
-@import "components/page/HomePage";
+@import "components/page/HomePage";//首页
+//Lites
+@import "components/lite/progress/progress";//进度条组件
 
 #Lmio {
   width: 100%;

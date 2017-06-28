@@ -1,11 +1,11 @@
 /**
  * Created by hand on 2017/6/8.
  */
-import homeStore from './homeStore';
+import HomePage from './page/HomePage';
 import userStore from './userStore';
 
 const Stores = {
-  homeStore,
+  HomePage,
   userStore
 };
 

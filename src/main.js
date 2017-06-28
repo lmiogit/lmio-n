@@ -6,7 +6,11 @@ import router from './router';
 
 import '../static/index.scss';
 
+import {Stores} from './store';
+
 Vue.config.productionTip = false;
+
+Vue.prototype.$store = {...Stores};
 
 /* eslint-disable no-new */
 new Vue({
