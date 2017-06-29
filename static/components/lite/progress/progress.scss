@@ -1,7 +1,18 @@
-.progress {
-  width: 100%;
+.route-progress {
+  width: 0;
   position: fixed;
   height: 2px;
   z-index: $UPPER_MOST;
-  background-image: linear-gradient(to left, #00FF00, #FF0000);
+  background: #FF9900;
+  opacity: 1;
+  transition: $TRANSITION_ALL;
+  &.hang {
+    width: 70%;
+  }
+  &.end {
+    width: 99%;
+  }
+  &.over {
+    opacity: 0;
+  }
 }

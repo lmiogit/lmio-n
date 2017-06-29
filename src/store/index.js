@@ -3,10 +3,12 @@
  */
 import HomePage from './page/HomePage';
 import userStore from './userStore';
+import routeStore from './routeStore';
 
 const Stores = {
   HomePage,
-  userStore
+  userStore,
+  routeStore
 };
 
 

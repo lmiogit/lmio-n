@@ -12,6 +12,11 @@ Vue.config.productionTip = false;
 
 Vue.prototype.$store = {...Stores};
 
+router.beforeEach((to, fron, next) => {
+  Vue.prototype.$store.
+  next();
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

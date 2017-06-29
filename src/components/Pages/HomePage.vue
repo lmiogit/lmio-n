@@ -1,5 +1,5 @@
 <template>
-  <div id="HomePage" data-id="HomePage" data-route-id="HomePage">
+  <div id="HomePage" data-id="HomePage" data-route="HomePage">
     <NavBar></NavBar>
     <div class="floor-list">
       <Floor v-for="(item, index ) in floors" :key="index" :floor="item"></Floor>
@@ -9,8 +9,9 @@
 </template>
 <script>
   import NavBar from '../PagesComponents/NavBar';
-  import Floor from '../PagesComponents/Floor/Floor';
   import FootBar from '../PagesComponents/FootBar';
+
+  import Floor from '../PagesComponents/Floor/Floor';
 
   export default {
     name: 'HomePage',

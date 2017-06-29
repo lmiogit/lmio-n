@@ -1,11 +1,9 @@
 <template>
-  <div class="progress">
-    <div class=""></div>
-  </div>
+  <div class="route-progress"></div>
 </template>
 <script>
   export default {
-    name: 'LiteProgress',
+    name: 'LiteRouteProgress',
     components: {},
     created() {
       return true;

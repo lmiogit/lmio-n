@@ -44,6 +44,7 @@
         border-radius: $BORDER_RADIOS;
         cursor: pointer;
         transition: $TRANSITION_ALL;
+        box-shadow: 1px 1px 0 0 #DDDDDD;
         &:hover {
           border-color: #66CCFF;
         }
@@ -53,7 +54,7 @@
           border-bottom: 1px solid #DDDDDD;
           padding-bottom: 10px;
         }
-        .description{
+        .description {
           padding-top: 10px;
         }
       }
