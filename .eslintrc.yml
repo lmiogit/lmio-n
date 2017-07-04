@@ -210,7 +210,7 @@ rules:
   no-unsafe-finally: 0
   no-unused-expressions: 2
   no-unused-labels: 2
-  no-unused-vars: [1, {vars: "all", args: "after-used"}]
+  no-unused-vars: [0, {vars: "all", args: "after-used"}]
   no-use-before-define: 0
   no-useless-call: 0
   no-useless-computed-key: 0

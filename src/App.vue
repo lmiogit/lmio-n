@@ -10,6 +10,12 @@
     name: 'Lmio',
     components: {
       LiteRouteProgress
+    },
+    data() {
+      return {};
+    },
+    created() {
+      console.log(this.$store);
     }
   };
 </script>

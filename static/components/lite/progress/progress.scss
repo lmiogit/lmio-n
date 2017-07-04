@@ -3,16 +3,21 @@
   position: fixed;
   height: 2px;
   z-index: $UPPER_MOST;
-  background: #FF9900;
+  background: $BG_COLOR;
   opacity: 1;
-  transition: $TRANSITION_ALL;
+  transition: all 1s ease;
+  border-radius: 1px;
   &.hang {
-    width: 70%;
+    width: 60%;
   }
   &.end {
-    width: 99%;
+    width: 100%;
   }
   &.over {
+    width: 100%;
     opacity: 0;
+  }
+  &.start{
+    width: 0;
   }
 }
