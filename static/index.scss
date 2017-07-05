@@ -1,17 +1,19 @@
 @charset "UTF-8";
 
-
 //modules
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
-
 //theme
 @import "theme/theme-default";
 //common
 @import "common/index";
+//transition
+@import "common/transition";
 //Pages
 @import "components/page/HomePage";//首页
 //Lites
-@import "components/lite/progress/progress";//进度条组件
+@import "components/lite/progress/progress";//进度条
+@import "components/lite/nav/nav";//导航栏
+
 
 #Lmio {
   width: 100%;

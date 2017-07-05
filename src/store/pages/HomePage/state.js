@@ -1,10 +1,3 @@
-class Floor {
-  constructor(obj) {
-    this.name = obj.name;
-    this.desc = obj.desc;
-  }
-}
-
 const config = [
   {
     name: 'Desktop',
@@ -28,11 +21,6 @@ const config = [
   },
 ];
 
-let fList = [];
-config.forEach(value => {
-  fList.push(new Floor(value));
-});
-
 export default {
-  floors: {...fList}
+  floors: config
 };

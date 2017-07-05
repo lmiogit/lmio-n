@@ -45,3 +45,8 @@ a, div, section, nav, span, p, ul, li {
   display: $MAIN_DISPLAY !important;
 }
 
+.pages {
+  width: 100%;
+  overflow: hidden;
+  flex-flow: column wrap;
+}

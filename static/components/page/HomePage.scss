@@ -1,28 +1,4 @@
 #HomePage {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  flex-flow: column wrap;
-  nav {
-    background: #66CCFF;
-    background-image: linear-gradient(to right, #88EEFF, #66CCFF);
-    justify-content: center;
-    .nav-ul {
-      width: $MAX_WIDTH;
-      flex-flow: row wrap;
-      justify-content: space-between;
-      .nav-ul-li {
-        cursor: pointer;
-        font-size: 1.2em;
-        padding: 16px 20px;
-        color: #FFFFFF;
-        justify-content: center;
-        &:hover {
-          background: #77DDFF;
-        }
-      }
-    }
-  }
   .floor-list {
     flex-flow: row wrap;
     justify-content: space-between;
@@ -60,7 +36,6 @@
       }
     }
   }
-
 }
 
 

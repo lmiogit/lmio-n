@@ -1,5 +1,7 @@
+import HomePageType from './pages/HomePage/types';
 
-export const START_PROGRESS = 'START_PROGRESS';
-export const HANG_PROGRESS = 'HANG_PROGRESS';
-export const END_PROGRESS = 'END_PROGRESS';
-export const OVER_PROGRESS = 'OVER_PROGRESS';
+
+export default {
+  CHANGE_ROUTE_PROGRESS: 'CHANGE_ROUTE_PROGRESS',
+  ...HomePageType,
+};

@@ -1,6 +1,6 @@
 <template>
   <div class="floor">
-    <div class="floor-content">
+    <div class="floor-content" @click="goIntroduction">
       <div class="floor-title">{{ name }}</div>
       <Description :text="desc"></Description>
     </div>
@@ -14,10 +14,20 @@
     },
     name: 'Floor',
     data() {
-      return {...this.floor};
+      return {
+        ...this.floor,
+        ...{
+          onEdit: false
+        }
+      };
     },
     props: {
       floor: [Object]
+    },
+    methods: {
+      goIntroduction() {
+        this.$router.push('/intro');
+      }
     },
     created() {
     }

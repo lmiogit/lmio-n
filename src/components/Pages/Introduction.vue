@@ -1,6 +1,7 @@
 <template>
-  <div id="Introduction" data-id="Introduction" data-route="Introduction">
-
+  <div id="Introduction" class="pages" data-id="Introduction" data-route="Introduction">
+    <NavBar></NavBar>
+    <FootBar></FootBar>
   </div>
 </template>
 <script>

@@ -1,8 +1,8 @@
 <template>
-  <div id="HomePage" data-id="HomePage" data-route="HomePage">
+  <div id="HomePage" class="pages" data-id="HomePage" data-route="HomePage">
     <NavBar></NavBar>
     <div class="floor-list">
-      <!--<Floor v-for="(item, index ) in floors" :key="index" :floor="item"></Floor>-->
+      <Floor v-for="(item, index ) in floors" :key="index" :floor="item"></Floor>
     </div>
     <FootBar></FootBar>
   </div>
@@ -12,7 +12,7 @@
   import FootBar from '../PagesComponents/FootBar';
   import Floor from '../PagesComponents/Floor/Floor';
 
-  import { mapGetters } from 'vuex';
+  import {mapGetters} from 'vuex';
 
   export default {
     name: 'HomePage',
@@ -23,8 +23,11 @@
       return {};
     },
     computed: {
-      ...mapGetters({})
+      ...mapGetters({
+        floors: 'floors'
+      })
     },
-    created() {}
+    created() {
+    }
   };
 </script>

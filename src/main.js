@@ -4,7 +4,9 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 
-import * as types from './store/types';
+import types from './store/types';
+
+console.log(types);
 
 import '../static/index.scss';
 
@@ -12,21 +14,27 @@ import store from './store';
 
 Vue.config.productionTip = false;
 
-router.beforeEach((to, from, next) => {
-  setTimeout(() => {
-    store.commit(types.HANG_PROGRESS);
-  }, 1000);
-  next();
-});
-
-router.afterEach((to, from) => {
-  setTimeout(() => {
-    store.commit(types.END_PROGRESS);
-  }, 2000);
-  setTimeout(() => {
-    store.commit(types.OVER_PROGRESS);
-  }, 3000);
-});
+// router.beforeEach((to, from, next) => {
+//   setTimeout(() => {
+//     store.dispatch({
+//       type: types.CHANGE_ROUTE_PROGRESS, state: 'start'
+//     });
+//   }, 1000);
+//   next();
+// });
+//
+// router.afterEach((to, from) => {
+//   setTimeout(() => {
+//     store.dispatch({
+//       type: types.CHANGE_ROUTE_PROGRESS, state: 'end'
+//     });
+//   }, 2000);
+//   setTimeout(() => {
+//     store.dispatch({
+//       type: types.CHANGE_ROUTE_PROGRESS, state: 'over'
+//     });
+//   }, 3000);
+// });
 
 /* eslint-disable no-new */
 new Vue({

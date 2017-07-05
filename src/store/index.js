@@ -1,7 +1,10 @@
+// main
 import Vue from 'vue';
 import Vuex from 'vuex';
-
-import * as types from './types';
+// types
+import types from './types';
+// modules
+import pages from './pages';
 
 Vue.use(Vuex);
 
@@ -10,24 +13,21 @@ const store = new Vuex.Store({
     routeState: 'start',
   },
   mutations: {
-    [types.START_PROGRESS](state) {
-      state.routeState = 'start';
-    },
-    [types.HANG_PROGRESS](state) {
-      state.routeState = 'hang';
-    },
-    [types.END_PROGRESS](state) {
-      state.routeState = 'end';
-    },
-    [types.OVER_PROGRESS](state) {
-      state.routeState = 'over';
+    [types.CHANGE_ROUTE_PROGRESS]: (state, payload) => {
+      state.routeState = payload.state;
     }
   },
-  actions: {},
+  actions: {
+    [types.CHANGE_ROUTE_PROGRESS]: ({commit, state}, payload) => {
+      commit(payload);
+    }
+  },
   getters: {
     routeState: state => state.routeState
   },
-  modules: {}
+  modules: {
+    pages
+  }
 });
 
 
