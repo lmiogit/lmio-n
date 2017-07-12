@@ -7,7 +7,7 @@
   </nav>
 </template>
 <script>
-  import UserBar from './UserBar';
+  import UserBar from '../UserBar/UserBar';
 
   export default {
     name: 'NavBar',

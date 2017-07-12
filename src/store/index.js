@@ -2,9 +2,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 // types
-import types from './types';
+// import types from './types';
 // modules
 import pages from './pages';
+// maps
+import {ConstMaps} from '../lib/ConstMaps';
 
 Vue.use(Vuex);
 
@@ -13,12 +15,12 @@ const store = new Vuex.Store({
     routeState: 'start',
   },
   mutations: {
-    [types.CHANGE_ROUTE_PROGRESS]: (state, payload) => {
+    [ConstMaps.CHANGE_ROUTE_PROGRESS]: (state, payload) => {
       state.routeState = payload.state;
     }
   },
   actions: {
-    [types.CHANGE_ROUTE_PROGRESS]: ({commit, state}, payload) => {
+    [ConstMaps.CHANGE_ROUTE_PROGRESS]: ({commit, state}, payload) => {
       commit(payload);
     }
   },

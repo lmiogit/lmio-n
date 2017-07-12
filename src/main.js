@@ -6,6 +6,8 @@ import router from './router';
 
 import types from './store/types';
 
+import {ConstMaps} from './lib/ConstMaps';
+
 console.log(types);
 
 import '../static/index.scss';
@@ -13,6 +15,8 @@ import '../static/index.scss';
 import store from './store';
 
 Vue.config.productionTip = false;
+
+Vue.prototype.$ConstMaps = ConstMaps;
 
 // router.beforeEach((to, from, next) => {
 //   setTimeout(() => {

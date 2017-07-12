@@ -8,8 +8,8 @@
   </div>
 </template>
 <script>
-  import NavBar from '../PagesComponents/NavBar';
-  import FootBar from '../PagesComponents/FootBar';
+  import NavBar from '../Lite/Bar/NavBar/NavBar';
+  import FootBar from '../Lite/Bar/FootBar/FootBar';
   import Floor from '../PagesComponents/Floor/Floor';
 
   import {mapGetters} from 'vuex';

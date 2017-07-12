@@ -2,14 +2,13 @@
   .floor-list {
     flex-flow: row wrap;
     justify-content: space-between;
-    padding: 5px;
+    padding: 4px;
     .floor {
-      padding-right: 5px;
-      padding-bottom: 5px;
+      padding: 4px;
       width: 50%;
-      &:nth-of-type(2n) {
-        padding-right: 0;
-      }
+      //&:nth-of-type(2n) {
+      //  padding-right: 0;
+      //}
       .floor-content {
         flex-flow: column wrap;
         justify-content: center;
