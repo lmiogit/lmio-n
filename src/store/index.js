@@ -6,7 +6,7 @@ import Vuex from 'vuex';
 // modules
 import pages from './pages';
 // maps
-import {ConstMaps} from '../lib/ConstMaps';
+import {MutationMaps, ActionMaps} from '../lib/ConstMaps';
 
 Vue.use(Vuex);
 
@@ -15,13 +15,13 @@ const store = new Vuex.Store({
     routeState: 'start',
   },
   mutations: {
-    [ConstMaps.CHANGE_ROUTE_PROGRESS]: (state, payload) => {
+    [MutationMaps.CHANGE_ROUTE_PROGRESS]: (state, payload) => {
       state.routeState = payload.state;
     }
   },
   actions: {
-    [ConstMaps.CHANGE_ROUTE_PROGRESS]: ({commit, state}, payload) => {
-      commit(payload);
+    [ActionMaps.CHANGE_ROUTE_PROGRESS]: ({commit, state}, payload) => {
+      commit(MutationMaps.CHANGE_ROUTE_PROGRESS, payload);
     }
   },
   getters: {

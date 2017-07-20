@@ -4,11 +4,9 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 
-import types from './store/types';
+// import types from './store/types';
 
 import {ConstMaps} from './lib/ConstMaps';
-
-console.log(types);
 
 import '../static/index.scss';
 
