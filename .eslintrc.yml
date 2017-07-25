@@ -218,7 +218,7 @@ rules:
   no-useless-constructor: 0
   no-useless-escape: 0
   no-void: 0
-  no-var: 0
+  no-var: 2
   no-warning-comments: 0
   no-whitespace-before-property: 2
   no-with: 2

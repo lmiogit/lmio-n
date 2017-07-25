@@ -6,7 +6,7 @@ import router from './router';
 
 // import types from './store/types';
 
-import {ConstMaps} from './lib/ConstMaps';
+import {ConstMaps} from './lib/maps/ConstMaps';
 
 import '../static/index.scss';
 
@@ -15,6 +15,8 @@ import store from './store';
 Vue.config.productionTip = false;
 
 Vue.prototype.$ConstMaps = ConstMaps;
+
+store.dispatch('UPDATE_ARTICLE');
 
 // router.beforeEach((to, from, next) => {
 //   setTimeout(() => {

@@ -6,7 +6,7 @@ import Vuex from 'vuex';
 // modules
 import pages from './pages';
 // maps
-import {MutationMaps, ActionMaps} from '../lib/ConstMaps';
+import {MutationMaps, ActionMaps} from '../lib/maps/ConstMaps';
 
 Vue.use(Vuex);
 
@@ -20,8 +20,20 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    [ActionMaps.CHANGE_ROUTE_PROGRESS]: ({commit, state}, payload) => {
+    [ActionMaps.CHANGE_ROUTE_PROGRESS]: async ({commit, state}, payload) => {
       commit(MutationMaps.CHANGE_ROUTE_PROGRESS, payload);
+    },
+    [`${ActionMaps.ACTION_UPDATE}_${ActionMaps.MODEL_ARTICLE}`]: async ({commit, dispatch, state}, payload) => {
+      await dispatch(`${ActionMaps.ACTION_SELECT}_${ActionMaps.MODEL_ARTICLE}`);
+      console.log('TEST ACTION1!!!!!');
+    },
+    [`${ActionMaps.ACTION_SELECT}_${ActionMaps.MODEL_ARTICLE}`]: async ({commit, state}, payload) => {
+      await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('TEST ACTION2!!!!!');
+          resolve();
+        }, 5000);
+      });
     }
   },
   getters: {

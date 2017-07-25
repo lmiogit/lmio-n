@@ -1,6 +1,6 @@
-import actions from './maps/ActionMaps';
-import mutations from './maps/MutationMaps';
-import types from './maps/TypesMaps';
+import actions from './ActionMaps';
+import mutations from './MutationMaps';
+import types from './TypesMaps';
 
 // todo maps
 export const ConstMaps = {

@@ -1,0 +1,31 @@
+#Login {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  .login {
+    width: 400px;
+    border-radius: $BORDER_RADIOS;
+    background: $EL_BG_COLOR;
+    padding: 20px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .title {
+      width: 100%;
+      font-size: 16px;
+      justify-content: center;
+      flex-direction: row;
+      padding: 20px 0;
+      border-bottom: 1px solid #DDDDDD;
+      letter-spacing: 1em;
+    }
+    .content {
+      padding: 10px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+  }
+}
