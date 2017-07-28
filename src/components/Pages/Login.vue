@@ -2,7 +2,7 @@
   <div id="Login" class="pages" data-id="Login" data-route="login">
     <div class="login">
       <div class="title">
-        登录
+        {{ UI.LOGIN[LANG] }}
       </div>
       <div class="content">
         <div class="form-row">
@@ -29,7 +29,7 @@
         </div>
         <div class="form-row">
           <div class="submit-row">
-            <button>登录</button>
+            <button>{{ UI.LOGIN[LANG] }}</button>
           </div>
         </div>
       </div>
@@ -37,7 +37,11 @@
   </div>
 </template>
 <script>
+  import {mapGetters} from 'vuex';
   import BaseInput from '../Lite/Inputs/BaseInput';
+  import {UI} from '../../maps/UI_Maps';
+
+  console.log(UI);
 
   export default {
     name: 'Title',
@@ -49,6 +53,14 @@
         userName: '',
         userPwd: ''
       };
+    },
+    computed: {
+      ...mapGetters({
+        LANG: 'language'
+      }),
+      UI: () => {
+        return UI;
+      }
     }
   };
 </script>

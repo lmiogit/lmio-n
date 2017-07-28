@@ -10,7 +10,7 @@
 <script>
   import NavBar from '../Lite/Bar/NavBar/NavBar';
   import FootBar from '../Lite/Bar/FootBar/FootBar';
-  import Floor from '../PagesComponents/Floor/Floor';
+  import Floor from '../PagesComponents/HomePage/Floor';
 
   import {mapGetters} from 'vuex';
 

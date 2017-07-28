@@ -1,12 +1,14 @@
 <template>
   <nav>
     <ul class="nav-ul">
-      <li class="nav-ul-li">Logo</li>
-      <li class="nav-ul-li" @click="goLogin">Login</li>
+      <li class="nav-ul-li">{{ UI.LOGO[LANG] }}</li>
+      <li class="nav-ul-li" @click="goLogin">{{ UI.LOGIN[LANG] }}</li>
     </ul>
   </nav>
 </template>
 <script>
+  import {mapGetters} from 'vuex';
+  import {UI} from '../../../../maps/UI_Maps';
   import UserBar from '../UserBar/UserBar';
 
   export default {
@@ -20,7 +22,14 @@
         this.$router.push('/login');
       }
     },
-    computed: {},
+    computed: {
+      ...mapGetters({
+        LANG: 'language'
+      }),
+      UI: () => {
+        return UI;
+      }
+    },
     created() {
     }
   };

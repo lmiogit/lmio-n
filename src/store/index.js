@@ -6,13 +6,14 @@ import Vuex from 'vuex';
 // modules
 import pages from './pages';
 // maps
-import {MutationMaps, ActionMaps} from '../lib/maps/ConstMaps';
+import {MutationMaps, ActionMaps} from '../maps/ConstMaps';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
     routeState: 'start',
+    language: 'CH',
   },
   mutations: {
     [MutationMaps.CHANGE_ROUTE_PROGRESS]: (state, payload) => {
@@ -37,7 +38,8 @@ const store = new Vuex.Store({
     }
   },
   getters: {
-    routeState: state => state.routeState
+    routeState: state => state.routeState,
+    language: state => state.language,
   },
   modules: {
     pages
