@@ -10,6 +10,7 @@ body {
   color: $FONT_COLOR;
   background: $BG_COLOR;
   display: $MAIN_DISPLAY;
+  flex-direction: column;
 }
 
 ul, li, ol {

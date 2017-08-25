@@ -6,8 +6,11 @@
 @import "theme/theme-default";
 //common
 @import "common/index";
-//transition
+//base
 @import "common/transition";
+@import "common/btn";
+@import "common/input";
+
 //Pages
 @import "components/page/HomePage";//首页
 @import "components/page/Login";//登录

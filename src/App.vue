@@ -1,6 +1,5 @@
 <template>
   <div id="Lmio">
-    <!--<LiteRouteProgress></LiteRouteProgress>-->
     <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>

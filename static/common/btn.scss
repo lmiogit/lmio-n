@@ -1,0 +1,30 @@
+.btn {
+  background-color: transparent;
+  font-size: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn.base {
+  background-color: #66CCFF;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.btn.btn-s {
+  padding: 4px 8px;
+}
+
+.btn.btn-m {
+  padding: 6px 12px;
+}
+
+.btn.btn-l {
+  padding: 8px 16px;
+}
+
+.btn.btn-w {
+  width: 100%;
+  height: inherit;
+  line-height: inherit;
+}

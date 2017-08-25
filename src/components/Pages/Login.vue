@@ -29,7 +29,7 @@
         </div>
         <div class="form-row">
           <div class="submit-row">
-            <button>{{ UI.LOGIN[LANG] }}</button>
+            <BaseBtn btnClass="btn btn-w">{{ UI.LOGIN[LANG] }}</BaseBtn>
           </div>
         </div>
       </div>
@@ -39,14 +39,16 @@
 <script>
   import {mapGetters} from 'vuex';
   import BaseInput from '../Lite/Inputs/BaseInput';
+  import BaseBtn from '../Lite/Buttons/BaseBtn';
   import {UI} from '../../maps/UI_Maps';
 
   console.log(UI);
 
   export default {
-    name: 'Title',
+    name: 'Login',
     components: {
-      BaseInput
+      BaseInput,
+      BaseBtn,
     },
     data() {
       return {

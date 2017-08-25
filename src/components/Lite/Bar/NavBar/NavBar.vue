@@ -24,13 +24,15 @@
     },
     computed: {
       ...mapGetters({
-        LANG: 'language'
+        LANG: 'language',
+        USER: 'userInfo'
       }),
       UI: () => {
         return UI;
       }
     },
     created() {
+      this.$store.dispatch('GET_USER');
     }
   };
 </script>

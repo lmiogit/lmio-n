@@ -1,6 +1,6 @@
 nav {
-  background-color: #66CCFF;
-  background-image: linear-gradient(to right, #88EEFF, #66CCFF);
+  background-color: $H_COLOR;
+  // background-image: linear-gradient(to right, #88EEFF, #66CCFF);
   justify-content: center;
   .nav-ul {
     width: $MAX_WIDTH;
@@ -13,7 +13,7 @@ nav {
       color: #FFFFFF;
       justify-content: center;
       &:hover {
-        background: #77DDFF;
+        background: $M_COLOR;
       }
     }
   }

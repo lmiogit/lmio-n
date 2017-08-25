@@ -1,0 +1,17 @@
+.input-shell {
+  width: 100%;
+  input {
+    width: inherit;
+  }
+}
+
+.base-input {
+  border-bottom: 1px solid #DDDDDD;
+  &:hover {
+    border-color: #66CCFF;
+  }
+  input {
+    background-color: transparent;
+    font-size: 14px;
+  }
+}
